@@ -13,7 +13,7 @@ const HomePage = () => {
 
   return (
     <ImageBackground
-    source={require("../../assets/images/home_background.jpg")}
+    source={require("../../assets/images/binaryCloud.jpg")}
     style={homeStyles.image}
     >
       <View style={homeStyles.container}>
