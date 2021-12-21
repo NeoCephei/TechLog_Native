@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
+import Answers from '../molecules/answers';
+
 const AnswerContainer = () => {
 
   const mockQuestion = {
@@ -21,7 +23,7 @@ const AnswerContainer = () => {
     //This will be a function that fetch one question (as mock) and displays 4 answers
     const answers = [];
 
-    answers.push(mockQuestion.correct);
+    answers.push({value: mockQuestion.correct, correct: true});
     populateArray(answers, mockQuestion.wrong, 4)
 
     return shuffleArray(answers)
@@ -48,16 +50,19 @@ const AnswerContainer = () => {
       randomIndex = Math.floor(Math.random() * data.length);
       if (!pickedIndex.includes(randomIndex)) {
         pickedIndex.push(randomIndex)
-        array.push(data[randomIndex]);
+        array.push({value: data[randomIndex], correct: false});
       }
     }
   }
 
-  console.log(getAnswer())
+  const options = getAnswer()
+  const renderOptions = options.map(option => {
+    return <Answers key={option.value} option={option}/> 
+  })
 
   return (
     <View style={questionContainerStyles.container}>
-
+      {renderOptions}
     </View>
   )
 }
