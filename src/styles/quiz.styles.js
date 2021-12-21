@@ -14,21 +14,6 @@ const quizStyles = StyleSheet.create({
     width: '100%',
     height: '100%'
   },
-  view2: {
-    flex: 5,
-    width: '100%',
-    backgroundColor:'green',
-  },
-  view3: {
-    flex: 5,
-    width: '100%',
-    backgroundColor:'red',
-  },
-  view4: {
-    flex: 1,
-    width: '100%',
-    backgroundColor:'yellow',
-  }
 });
 
 export default quizStyles;

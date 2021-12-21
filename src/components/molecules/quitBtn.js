@@ -33,20 +33,21 @@ const quitBtnStyles = StyleSheet.create({
     flexDirection: "row",
   },
   btn: {
-    borderRadius: 100,
-    backgroundColor: "#228B22",
+    paddingHorizontal: 2,
+    paddingVertical: 2,
+    height: 40,
+    width: 40,
     alignSelf: "center",
     alignItems: "center",
-    marginHorizontal: "1%",
-    width: 40,
-    height: 40,
-    minWidth: 35,
-    minHeight: 35,
     textAlign: "center",
     borderRadius: 20,
+    backgroundColor:'#dcdae2',
+  
+    borderWidth: 3,
+    borderColor:'#2B2A2F',
   },
   btnText: {
     fontSize: 20,
-    color: "#fff",
+    color: "#000",
   }
 })

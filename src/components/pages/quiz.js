@@ -7,6 +7,7 @@ import quizStyles from "../../styles/quiz.styles";
 import TopInfo from "../organisms/topInfo"
 import QuestionContainer from "../organisms/questionContainer"
 import AnswerContainer from "../organisms/answerContainer";
+import BottomInfo from "../organisms/bottomInfo"
 
 const Quiz = () => {
 
@@ -19,10 +20,7 @@ const Quiz = () => {
         <TopInfo />
         <QuestionContainer />
         <AnswerContainer />
-
-        <View style={quizStyles.view4}>
-          <Text>bottomInfo</Text>
-        </View>
+        <BottomInfo />
       </View>
     </ImageBackground>
   );

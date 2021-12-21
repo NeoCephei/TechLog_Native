@@ -2,11 +2,12 @@ import React, { useState, useEffect, useRef } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 
-import {timerCountdown, timerReset} from '../../redux/actions'
+import {loseLife, lifeReset} from '../../redux/actions'
 
 const Countdown = () => {
 
   const dispatch = useDispatch();
+  const lifes = useSelector((state) => state.lifes);
   // const timer = useSelector((state) => state.timer);
 
   // useEffect(() => {
@@ -20,7 +21,8 @@ const Countdown = () => {
   //   }, 1000);
   // }, [timer])
 
-  const [secondsLeft, setSecondsLeft] = useState(60)
+  const seconds = 60;
+  const [secondsLeft, setSecondsLeft] = useState(seconds)
 
   function fakeTimer(callback, delay) {
     const savedCb = useRef();
@@ -45,7 +47,10 @@ const Countdown = () => {
       if (secondsLeft > 0) {
         setSecondsLeft(secondsLeft - 1)
       } else {
-        setSecondsLeft(60)
+        setSecondsLeft(seconds)
+        lifes === 0 
+          ? dispatch(lifeReset())
+          : dispatch(loseLife())
       }
     },
     1000
