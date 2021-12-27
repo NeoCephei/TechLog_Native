@@ -1,6 +1,8 @@
 import React from "react";
-import { Text, TouchableOpacity, View, ImageBackground } from "react-native";
-import { useSelector, useDispatch } from "react-redux";
+import { View, ImageBackground } from "react-native";
+
+import apiService from "../../services/ApiService"
+// getQuestions, postQuestion,
 
 import quizStyles from "../../styles/quiz.styles";
 
@@ -10,6 +12,13 @@ import AnswerContainer from "../organisms/answerContainer";
 import BottomInfo from "../organisms/bottomInfo"
 
 const Quiz = () => {
+
+  const questions = async () => {
+    const allQuestions = await apiService.getQuestions()
+    console.log(allQuestions)
+  }
+
+  questions()
 
   return (
     <ImageBackground

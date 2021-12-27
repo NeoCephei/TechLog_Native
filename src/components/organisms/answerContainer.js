@@ -16,7 +16,8 @@ const AnswerContainer = () => {
       '4',
       '6',
       '7'
-    ]
+    ],
+    description: 'this is a mock description'
   }
 
   const getAnswer = () => {
