@@ -3,10 +3,18 @@
 // const BASE_URL = HEROKU_URL
 const BASE_URL = 'https://sleepy-dusk-62160.herokuapp.com'
 
+async function keepServerAlive () {
+  try {
+    const isAlive = await fetch(`${BASE_URL}/`)
+    return isAlive;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 async function getQuestions() {
   try {
     const allQuestions = await fetch(`${BASE_URL}/questions`);
-    console.log(BASE_URL, allQuestions)
     return allQuestions.json();
   } catch (error) {
     console.log(error);
@@ -29,6 +37,7 @@ async function postQuestion(data) {
 }
 
 const ApiService = {
+  keepServerAlive,
   getQuestions,
   postQuestion,
 };

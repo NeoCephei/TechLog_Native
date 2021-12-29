@@ -2,7 +2,7 @@ import React from "react";
 import { View, ImageBackground } from "react-native";
 
 import apiService from "../../services/ApiService"
-// getQuestions, postQuestion,
+// keepServerAlive, getQuestions, postQuestion,
 
 import quizStyles from "../../styles/quiz.styles";
 
@@ -13,12 +13,20 @@ import BottomInfo from "../organisms/bottomInfo"
 
 const Quiz = () => {
 
+  const keepServer = async () => {
+    const isAlive = await apiService.keepServerAlive();
+    console.log(isAlive);
+  }
   const questions = async () => {
-    const allQuestions = await apiService.getQuestions()
+    const allQuestions = await apiService.getQuestions();
     console.log(allQuestions)
   }
 
   questions()
+
+  setInterval(() => {
+    keepServer();
+  }, 1000*60)
 
   return (
     <ImageBackground
