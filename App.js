@@ -1,53 +1,26 @@
-import { StatusBar } from "expo-status-bar";
+import { StatusBar } from 'expo-status-bar';
+
 import React from "react";
-import {
-  Image,
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  ImageBackground,
-  TouchableOpacity,
-} from "react-native";
+import { Provider, useSelector } from 'react-redux';
+import { createStore } from 'redux';
+import { Image, View } from 'react-native';
+
+import reducers from './src/redux/configureStore';
+
+import appStyles from './src/styles/app.styles';
+
+import Dashboard from './src/components/pages/dashboard'
+
+const store = createStore(reducers)
 
 export default function App() {
+
   return (
-    <ImageBackground
-      source={require("./media/coffee.jpg")}
-      style={styles.image}
-    >
-      <View style={styles.container}>
-        <Text style={{ color: "#000", fontSize: 40 }}>TECH.LOG( )</Text>
-        <TouchableOpacity style={styles.btn} title="Get Started">
-          <Text>Get Started</Text>
-        </TouchableOpacity>
+    <Provider store={store}>
+      <View style={appStyles.container}>
+        <Dashboard/>
         <StatusBar style="auto" />
       </View>
-    </ImageBackground>
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "space-between",
-    margin: 70,
-  },
-  image: {
-    flex: 1,
-    justifyContent: "center",
-  },
-  btn: {
-    paddingHorizontal: 8,
-    paddingVertical: 6,
-    borderRadius: 4,
-    backgroundColor: "oldlace",
-    alignSelf: "center",
-    alignItems: "center",
-    marginHorizontal: "1%",
-    marginBottom: 6,
-    minWidth: "48%",
-    textAlign: "center",
-  },
-});
