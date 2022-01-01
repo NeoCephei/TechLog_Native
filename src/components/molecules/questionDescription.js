@@ -1,12 +1,14 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
+import { useSelector } from "react-redux";
 
 const QuestionDescription = () => {
+  const {questions, index} = useSelector(state => state.questions);
 
   return (
     <View style={questionDescriptionStyles.container}>
       <Text style={questionDescriptionStyles.text}>
-        Guess the output
+        {questions[index].description}
       </Text>
     </View>
   )

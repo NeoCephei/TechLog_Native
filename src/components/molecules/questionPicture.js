@@ -1,13 +1,15 @@
 import React from "react";
 import { Image, View, StyleSheet } from "react-native";
+import { useSelector } from "react-redux";
 
 const QuestionPicture = () => {
+  const {questions, index} = useSelector(state => state.questions);
 
   return (
     <View style={questionImageStyles.container}>
       <Image 
         style={questionImageStyles.image}
-        source={require('../../assets/images/question1.png')} />
+        source={{uri: `${questions[index].image}`}} />
     </View>
   )
 }

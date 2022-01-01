@@ -2,16 +2,27 @@ import React from "react";
 import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 
+import {nextQuestion} from '../../redux/actions'
 
 const NextBtn = () => {
+
+  const dispatch = useDispatch();
+  const {answered} = useSelector(state => state.questions);
+
+  function handleNext() {
+    dispatch(nextQuestion())
+  }
 
   return (
     <View style={nextBtnStyles.container}>
       <TouchableOpacity 
         title='Next Question'
         key='next'
-        onPress={() => console.log('Next question')}
-        style={nextBtnStyles.btn}
+        onPress={() => handleNext()}
+        style={ answered 
+          ? nextBtnStyles.btn
+          : nextBtnStyles.btnHide}
+        disabled={!answered}
       > 
         <Text style={nextBtnStyles.btnText}>Next</Text>
       </TouchableOpacity>
@@ -43,6 +54,10 @@ const nextBtnStyles = StyleSheet.create({
   
     borderWidth: 3,
     borderColor:'#2B2A2F',
+  },
+  btnHide: {
+    opacity: 0, 
+    height: 0
   },
   btnText: {
     fontSize: 20,

@@ -1,14 +1,20 @@
 import React from "react";
 import { Image, TouchableOpacity, View, StyleSheet } from "react-native";
+import { useSelector, useDispatch } from "react-redux";
 
 const QuestionInformation = () => {
+
+  const {answered} = useSelector(state => state.questions);
+  // Should dispatch information of the answer
 
   return (
     <View style={questionInformationStyles.container}>
       <TouchableOpacity onPress={() => console.log('Tell me why')}>
         <Image
           source={require('../../assets/icons/information.png')}
-          style={questionInformationStyles.icons}
+          style={answered 
+            ? questionInformationStyles.icons
+            : questionInformationStyles.iconsHide}
         />
       </TouchableOpacity>
     </View>
@@ -34,5 +40,10 @@ const questionInformationStyles = StyleSheet.create({
     resizeMode : 'contain',
     height: 40,
     width: 40,
+  },
+  iconsHide: {
+    resizeMode : 'contain',
+    opacity: 0, 
+    height: 0
   }
 })

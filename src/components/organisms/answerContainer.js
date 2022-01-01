@@ -1,31 +1,21 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import { useSelector } from "react-redux";
 
 import Answers from '../molecules/answers';
 
 const AnswerContainer = () => {
+  //I just want to update this one if index changes
 
-  const mockQuestion = {
-    description: 'this is a mock question',
-    image: 'http://placehold.it/',
-    correct: '5',
-    wrong: [
-      '1',
-      '2',
-      '3',
-      '4',
-      '6',
-      '7'
-    ],
-    description: 'this is a mock description'
-  }
+  const {questions, index} = useSelector(state => state.questions);
+
+  const currentQuestion = questions[index];
 
   const getAnswer = () => {
-    //This will be a function that fetch one question (as mock) and displays 4 answers
     const answers = [];
 
-    answers.push({value: mockQuestion.correct, correct: true});
-    populateArray(answers, mockQuestion.wrong, 4)
+    answers.push({value: currentQuestion.correct, correct: true});
+    populateArray(answers, currentQuestion.wrong, 4)
 
     return shuffleArray(answers)
   }
@@ -66,7 +56,7 @@ const AnswerContainer = () => {
       {renderOptions}
     </View>
   )
-}
+};
 
 export default AnswerContainer;
 

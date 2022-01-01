@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import {loseLife, lifeReset} from '../../redux/actions'
 
-const Countdown = () => {
+const Countdown = ({questionIndex}) => {
 
   const dispatch = useDispatch();
   const lifes = useSelector((state) => state.lifes);
@@ -23,6 +23,7 @@ const Countdown = () => {
 
   const seconds = 60;
   const [secondsLeft, setSecondsLeft] = useState(seconds)
+  const [qIndex, setQIndex] = useState(questionIndex)
 
   function fakeTimer(callback, delay) {
     const savedCb = useRef();

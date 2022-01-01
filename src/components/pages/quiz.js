@@ -1,8 +1,6 @@
 import React from "react";
 import { View, ImageBackground } from "react-native";
-
-import apiService from "../../services/ApiService"
-// keepServerAlive, getQuestions, postQuestion,
+import { useSelector } from "react-redux";
 
 import quizStyles from "../../styles/quiz.styles";
 
@@ -13,20 +11,7 @@ import BottomInfo from "../organisms/bottomInfo"
 
 const Quiz = () => {
 
-  const keepServer = async () => {
-    const isAlive = await apiService.keepServerAlive();
-    console.log(isAlive);
-  }
-  const questions = async () => {
-    const allQuestions = await apiService.getQuestions();
-    console.log(allQuestions)
-  }
-
-  questions()
-
-  setInterval(() => {
-    keepServer();
-  }, 1000*60)
+  const {index} = useSelector(state => state.questions);
 
   return (
     <ImageBackground
@@ -36,7 +21,7 @@ const Quiz = () => {
       <View style={quizStyles.container}>
         <TopInfo />
         <QuestionContainer />
-        <AnswerContainer />
+        <AnswerContainer questionIndex={index}/>
         <BottomInfo />
       </View>
     </ImageBackground>

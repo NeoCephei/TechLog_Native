@@ -1,8 +1,6 @@
 import React, {useEffect} from "react";
 import { Image, View, StyleSheet } from "react-native";
-import { useSelector, useDispatch } from "react-redux";
-
-import {lifeReset} from '../../redux/actions'
+import { useSelector } from "react-redux";
 
 const LiveCounter = () => {
 

@@ -1,21 +1,24 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
+import { useSelector } from "react-redux";
 
 import QuitBtn from '../molecules/quitBtn'
 import Countdown from "../molecules/countdown"
+import QuestionIndicator from "../molecules/questionIndicator";
 
 const TopInfo = () => {
 
+  const {index} = useSelector(state => state.questions);
 
   return (
-    <View style={topÌnfoStyles.container}>
-      <View style={topÌnfoStyles.items}>
-        <Text>QNumber</Text>
+    <View style={topInfoStyles.container}>
+      <View style={topInfoStyles.items}>
+        <QuestionIndicator />
       </View>
-      <View style={topÌnfoStyles.items}>
-        <Countdown />
+      <View style={topInfoStyles.items}>
+        <Countdown questionIndex={index}/>
       </View>
-      <View style={topÌnfoStyles.items}>
+      <View style={topInfoStyles.items}>
         <QuitBtn />
       </View>
     </View>
@@ -24,7 +27,7 @@ const TopInfo = () => {
 
 export default TopInfo;
 
-const topÌnfoStyles = StyleSheet.create({
+const topInfoStyles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
