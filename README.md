@@ -7,8 +7,10 @@ TechLog is a react native project, aimed for starter programmers looking to impr
 ### 1. Clone the repo locally
 This repo is only the client but you will need to fork/clone client and server to make the app run.
 We are currently looking for a full deployment to allow anyone to use it.
-Nowadays only the server can be deployed using heroku
+Nowadays only the server can be deployed using heroku.
+
 Use `git clone <Your Prefered Method>` from [Client Repo](https://github.com/NeoCephei/TechLog_Native)
+
 Use `git clone <Your Prefered Method>` from [Server Repo](https://github.com/NeoCephei/TechLog_Server)
 
 ### 2. Install dependencies
