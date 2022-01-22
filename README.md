@@ -1,5 +1,6 @@
 # TechLog_Native
 ![MadeWith](https://img.shields.io/badge/Made%20for-VSCode-1f425f.svg)
+
 TechLog is a react native project, aimed for starter programmers looking to improve their knowledge in Js essentials such clousures, scopes and more in test format using real code.
 
 ## Getting Started
